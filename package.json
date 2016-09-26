@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "browser-sync start -s --port 8080 --logLevel 'info' --no-notify  --no-open --files '**/*, !.DS_Store, !.git/**, !node_modules/**, !bower_components/**'"
   },
   "author": "",
   "license": "ISC",

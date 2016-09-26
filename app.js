@@ -1,5 +1,19 @@
 var app = angular.module('app', []);
 app.constant('API_HOST', 'http://localhost:3000');
+app.factory('endpoints', function() {
+  return {
+    users: '/api/users',
+    books: '/api/books',
+    allData: '/api/data'
+  };
+});
+app.factory('resourceEndpoints', function(API_HOST, endpoints) {
+  return {
+    endpointFor: function(key) {
+      return API_HOST + endpoints[key];
+    }
+  };
+});
 app.controller('mainCtrl', function($scope) {
   var mainCtrl = this;
   $scope.app = {
@@ -11,18 +25,19 @@ app.controller('mainCtrl', function($scope) {
   };
   this.remove = function(toRemoveItem) {
     $scope.app.items = $scope.app.items.filter(function(item) {
-      return item.id === toRemoveItem.id;
+      return item.id !== toRemoveItem.id;
     });
     return $scope.app.items;
   };
 });
-app.factory('mainService', function($http, API_HOST) {
+app.factory('mainService', function($http, resourceEndpoints) {
   return {
     add: function(a, b) {
       return a + b;
     },
     getData: function() {
-      return $http.get(API_HOST + '/data');
+      var resource = resourceEndpoints.endpointFor('allData');
+      return $http.get(resource);
     }
   };
 });

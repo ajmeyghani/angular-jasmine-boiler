@@ -1,4 +1,4 @@
-describe('Main Controller', function() {
+describe('Main Controller Tests:', function() {
   var underTest, scp;
   beforeEach(function() {
     /* run the following before each describe block */
@@ -10,7 +10,7 @@ describe('Main Controller', function() {
       });
     });
   });
-  /* From each describe block to another, the controller and the 
+  /* From each describe block to another, the controller and the
   states of scope are refreshed.
   */
   describe('The add method', function() {
