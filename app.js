@@ -46,10 +46,12 @@ app.directive('customSearch', function() {
     restrict: 'EA',
     scope: {},
     controller: function($scope) {
-      $scope.searchValue = '';
+      $scope.model = {
+        searchValue: ''
+      };
     },
-    template: '<input type="text" placeholder="search ..." ng-model="searchValue">'+
-              '<p>Searching for: {{searchValue}}</p>'
+    template: '<input type="text" placeholder="search ..." ng-model="model.searchValue">'+
+              '<p>Searching for: {{model.searchValue}}</p>'
   };
 });
 angular.element(document).ready(function () {
