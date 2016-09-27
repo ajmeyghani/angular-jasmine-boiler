@@ -44,14 +44,16 @@ app.factory('mainService', function($http, resourceEndpoints) {
 app.directive('customSearch', function() {
   return {
     restrict: 'EA',
-    scope: {},
+    scope: {
+      name: '='
+    },
     controller: function($scope) {
       $scope.model = {
         searchValue: ''
       };
     },
     template: '<input type="text" placeholder="search ..." ng-model="model.searchValue">'+
-              '<p>Searching for: {{model.searchValue}}</p>'
+              '<p>Searching for: {{model.searchValue}}</p><span>name is {{name}}</span>'
   };
 });
 angular.element(document).ready(function () {
