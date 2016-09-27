@@ -6,12 +6,7 @@ describe('Custom search directive tests:', function() {
     angular.mock.inject(function(_$compile_, _$rootScope_) {
       $compile = _$compile_;
       $rootScope = _$rootScope_;
-      $scope = $rootScope.$new();
-      $scope.model = {
-        searchValue: 'p'
-      };
-      element = $compile(angular.element('<custom-search></custom-search>'))($scope);
-      $rootScope.$digest();
+      element = $compile(angular.element('<custom-search></custom-search>'))($rootScope);
     });
     $rootScope.$digest();
   });
@@ -20,12 +15,8 @@ describe('Custom search directive tests:', function() {
   */
   describe('Directive:', function() {
     it('should update the content', function() {
-      $rootScope.$digest();
-      // element.val('someterm');
-      // element.triggerHandler('input');
+      element.find('input').val('someterm').triggerHandler('input');
       expect(element.text().toLowerCase()).toBe('searching for: someterm');
     });
   });
 });
-
-
